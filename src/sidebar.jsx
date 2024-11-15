@@ -3,6 +3,7 @@ import './sidebar.css';
 import Serial from './sidebarcomponents/serial.jsx';
 import Layers from './sidebarcomponents/layers.jsx';
 import Macros from './sidebarcomponents/macros.jsx';
+import FileOptions from './sidebarcomponents/fileoptions.jsx';
 import { FaBars } from 'react-icons/fa';
 import { FiLayers } from "react-icons/fi";
 
@@ -37,7 +38,7 @@ function Sidebar() {
             </div>
             <div className='down'>
                 <Macros />
-                
+                <FileOptions />
             </div>
         </div>
     );

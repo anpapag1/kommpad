@@ -1,12 +1,12 @@
 .sidebar {
     position: absolute;
-    height: 100vh;
+    height: 98.0vh;
     background-color: black;
     top: 0px;
     left: -193px;
     /* Move it off the screen to the left */
     width: 240px;
-    z-index: 1;
+    z-index: 2;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     color: white;
