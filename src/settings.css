@@ -1,7 +1,7 @@
 .settings{
     position: absolute;
     height: 280px;
-    bottom: -200px;
+    bottom: -235px;
     right: 0px;
     left: 65px;
     background-color: #D9D9D9;
@@ -23,8 +23,11 @@
     height: 100%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    box-shadow: 0px 0px 10px #00000048;
-
+    box-shadow: 0px 0px 4px #00000048;
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    flex: 1; /* Allow the border to grow and shrink based on available space */
 }
 
 .settingsHeader {

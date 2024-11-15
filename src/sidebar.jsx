@@ -9,7 +9,7 @@ import { FiLayers } from "react-icons/fi";
 
 
 function Sidebar() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [selectedLayer, setSelectedLayer] = useState(1);
 
     const toggleSidebar = () => {
