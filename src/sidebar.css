@@ -3,7 +3,7 @@
     height: 100vh;
     background-color: black;
     top: 0px;
-    left: 0px;
+    left: -193px;
     /* Move it off the screen to the left */
     width: 240px;
     z-index: 1;
@@ -13,8 +13,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-right: 10px;
-    padding-top: 10px;
+    padding-right: 15px;
+    padding-top: 15px;
+    transition: left 0.3s ease;
+}
+
+.sidebar.open {
+    left: 0px;
 }
 
 .row {
@@ -36,25 +41,34 @@
     height: 130px;
     display: flex;
     justify-content: flex-end;
-    padding-right: 5px;
     flex-wrap: wrap;
 }
 
 .middle {
     height: 300px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .down {
-    background-color: green;
-    height: 150px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    height: 120px;
 }
 
 .moreIcon {
     font-size: 40px;
     color: #8F4BAE;
 }
+.moreIcon:hover{
+    color: #2e153a;
+}
 
 .layersIcon {
     font-size: 40px;
     color: white;
+    padding: 0px;
 }

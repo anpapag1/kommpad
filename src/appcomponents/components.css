@@ -12,6 +12,12 @@
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-size: 15px;
+    box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.7);
+
+}
+
+.buttons:hover{
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
 }
 
 .encoder {
@@ -24,4 +30,10 @@
     align-self: center;
     /*move it outside of the parent div on top*/
     margin-top: -60px;
+    box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.7);
+
+}
+
+.encoder:hover{
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, .5);
 }

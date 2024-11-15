@@ -1,10 +1,14 @@
 import "./components.css";
 
-function Layers({ input = "Empty", number }) {
+function Layers({ input = "Empty", number, isSelected, onClick }) {
     return (
-        <div className="layer">
-            <input className="textInput" defaultValue={input} />
-            <button className="number">{number}</button>
+        <div className="layer" onClick={onClick}>
+            <div className="column1">
+                <input className="textInput" defaultValue={input} />
+            </div>
+            <div className="column2">
+                <button className={`number ${isSelected ? 'selected' : ''}`}>{number}</button>
+            </div>
         </div>
     );
 }

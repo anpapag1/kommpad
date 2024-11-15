@@ -1,6 +1,6 @@
 import "./App.css";
-import Button from "./components/button.jsx";
-import Encoder from "./components/encoder.jsx";
+import Button from "./appcomponents/button.jsx";
+import Encoder from "./appcomponents/encoder.jsx";
 
 function App() {
 
