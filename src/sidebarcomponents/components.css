@@ -1,0 +1,124 @@
+.serial {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Center columns horizontally */
+    align-items: center;
+    /* Center columns vertically */
+    width: 100%;
+}
+
+.serialText {
+    font-size: 15px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+}
+
+.dropdown {
+    align-items: center;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+    width: 90%;
+    height: 40px;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    color: black;
+}
+
+.dropdown option {
+    font-size: 15px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: black;
+}
+
+.refresh {
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #AD88BE;
+    width: 90%;
+    height: 20px;
+    border: none;
+    display: flex;
+    margin-top: 5px;
+}
+
+.check {
+    color: #008F1F;
+    font-size: 40px;
+    background-color: #373737;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
+
+
+}
+
+.column1 {
+    flex-grow: 1;
+    /* Allow it to take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */
+}
+
+.column2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center content horizontally */
+}
+
+.layer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.textInput {
+    border-radius: 5px;
+    background-color: #474747;
+    width: 170px;
+    height: 39px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    text-align: center;
+    box-shadow: inset 0 0 5px #000000;
+}
+
+.number {
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    background-color: #351A42;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.refreshIcon {
+    font-size: 20px;
+    color: #000000;
+}
+
+.refreshText {
+    font-size: 15px;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: black;
+}

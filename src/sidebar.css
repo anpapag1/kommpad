@@ -1,0 +1,60 @@
+.sidebar {
+    position: absolute;
+    height: 100vh;
+    background-color: black;
+    top: 0px;
+    left: 0px;
+    /* Move it off the screen to the left */
+    width: 240px;
+    z-index: 1;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.up {
+    height: 130px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+    flex-wrap: wrap;
+}
+
+.middle {
+    height: 300px;
+}
+
+.down {
+    background-color: green;
+    height: 150px;
+}
+
+.moreIcon {
+    font-size: 40px;
+    color: #8F4BAE;
+}
+
+.layersIcon {
+    font-size: 40px;
+    color: white;
+}

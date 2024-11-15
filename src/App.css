@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.box {
+  width: 500px;
+  height: 200px;
+  background-color: #1D1D1D;
+  align-self: center;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.buttonMatrix {
+  /*only left side of container 50%*/
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 93%;
+  flex-wrap: wrap;
+}
+
+.encoderDisplay {
+  /*only right side of container 50%*/
+  width: 37%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.disp {
+  width: 140px;
+  height: 40px;
+  background-color: #000000;
+  align-self: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+
+.text {
+  position: absolute;
+  color: #353535;
+  left: 7%;
+  font-size: 600%;
+  z-index: 0;
+  top: -5%;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+}
