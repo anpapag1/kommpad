@@ -8,6 +8,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
     <Sidebar />
-    <Settings />
+    <Settings value='Button configurator' />
   </React.StrictMode>,
 );
