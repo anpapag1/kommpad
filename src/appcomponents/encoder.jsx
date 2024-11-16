@@ -1,9 +1,9 @@
 import "./components.css";
 
-function Encoder() {
-    return (
-        <div className="encoder"></div>
-    );
+function Encoder(props) {
+  return (
+    <div className="encoder" onClick={props.onClick}></div>
+  );
 }
 
 export default Encoder;

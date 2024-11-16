@@ -1,9 +1,11 @@
 import "./components.css";
 
 function Button(props) {
-    return (
-        <div className="buttons">{props.value}</div>
-    );
+  return (
+    <div className="buttons" onClick={props.onClick}>
+      {props.value}
+    </div>
+  );
 }
 
 export default Button;

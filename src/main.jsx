@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import Sidebar from "./sidebar.jsx";
 import Settings from "./settings.jsx";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-    <Sidebar />
-    <Settings value='Button configurator' />
-  </React.StrictMode>,
-);
+function Main() {
+  const [settingsText, setSettingsText] = useState("Button Configurator");
+
+  const handleButtonClick = (text) => {
+    setSettingsText(text);
+  };
+
+  const handleEncoderClick = (text) => {
+    setSettingsText(text);
+  };
+
+  return (
+    <React.StrictMode>
+      <App onButtonClick={handleButtonClick} onEncoderClick={handleEncoderClick} />
+      <Sidebar />
+      <Settings value={settingsText} />
+    </React.StrictMode>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Main />);
