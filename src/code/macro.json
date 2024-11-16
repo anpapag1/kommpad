@@ -1,10 +1,117 @@
 {
   "layers": [
     {
-      "name": "Layer 0",
+      "name": "Media",
       "buttons": [
         {
           "type": "Keyboard",
+          "key": "F2",
+          "label": "PREV",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "MEDIA NEXT",
+          "label": "NEXT",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F3",
+          "label": "PLAY PAUSE",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F4",
+          "label": "F1",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F5",
+          "label": "F2",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F6",
+          "label": "LAYERS",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        }
+      ],
+      "encoder": [
+        {
+          "type": "Keyboard",
+          "key": "F6",
+          "label": "F6",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F6",
+          "label": "F6",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F6",
+          "label": "F6",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "(empty)",
+      "buttons": [
+        {
+          "type": "Keyboard",
+          "modifier": 0,
           "key": "F1",
           "label": "F1",
           "modifiers": {
@@ -16,6 +123,7 @@
         },
         {
           "type": "Keyboard",
+          "modifier": 0,
           "key": "F2",
           "label": "F2",
           "modifiers": {
@@ -27,6 +135,7 @@
         },
         {
           "type": "Keyboard",
+          "modifier": 0,
           "key": "F3",
           "label": "F3",
           "modifiers": {
@@ -38,6 +147,7 @@
         },
         {
           "type": "Keyboard",
+          "modifier": 0,
           "key": "F4",
           "label": "F4",
           "modifiers": {
@@ -49,6 +159,7 @@
         },
         {
           "type": "Keyboard",
+          "modifier": 0,
           "key": "F5",
           "label": "F5",
           "modifiers": {
@@ -60,6 +171,7 @@
         },
         {
           "type": "Keyboard",
+          "modifier": 0,
           "key": "F6",
           "label": "F6",
           "modifiers": {
@@ -107,7 +219,7 @@
       ]
     },
     {
-      "name": "Layer 1",
+      "name": "(empty)",
       "buttons": [
         {
           "type": "Keyboard",
@@ -219,7 +331,119 @@
       ]
     },
     {
-      "name": "Layer 2",
+      "name": "(empty)",
+      "buttons": [
+        {
+          "type": "Keyboard",
+          "modifier": 0,
+          "key": "F1",
+          "label": "F1",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "modifier": 0,
+          "key": "F2",
+          "label": "F2",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "modifier": 0,
+          "key": "F3",
+          "label": "F3",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "modifier": 0,
+          "key": "F4",
+          "label": "F4",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "modifier": 0,
+          "key": "F5",
+          "label": "F5",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "modifier": 0,
+          "key": "F6",
+          "label": "F6",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        }
+      ],
+      "encoder": [
+        {
+          "type": "Keyboard",
+          "key": "F6",
+          "label": "F6",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F6",
+          "label": "F6",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        },
+        {
+          "type": "Keyboard",
+          "key": "F6",
+          "label": "F6",
+          "modifiers": {
+            "ctrl": false,
+            "shift": false,
+            "alt": false,
+            "win": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "(empty)",
       "buttons": [
         {
           "type": "Keyboard",

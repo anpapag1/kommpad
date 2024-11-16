@@ -7,41 +7,71 @@ import FileOptions from './sidebarcomponents/fileoptions.jsx';
 import { FaBars } from 'react-icons/fa';
 import { FiLayers } from "react-icons/fi";
 
+function Sidebar({ config }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedLayer, setSelectedLayer] = useState(1);
+  const [layerNames, setLayerNames] = useState(config.layers.map(layer => layer.name));
 
-function Sidebar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedLayer, setSelectedLayer] = useState(1);
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
+  const handleLayerClick = (number) => {
+    setSelectedLayer(number);
+  };
+
+  const handleLayerNameChange = (index, name) => {
+    const newLayerNames = [...layerNames];
+    newLayerNames[index] = name;
+    setLayerNames(newLayerNames);
+  };
+
+  const handleExportToPC = () => {
+    const updatedConfig = {
+      ...config,
+      layers: config.layers.map((layer, index) => ({
+        ...layer,
+        name: layerNames[index]
+      }))
     };
 
-    const handleLayerClick = (number) => {
-        setSelectedLayer(number);
-    };
+    const blob = new Blob([JSON.stringify(updatedConfig, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'macro.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
-    return (
-        <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-            <div className='up'>
-                <FaBars className='moreIcon' onClick={toggleSidebar} />
-                <Serial />
-            </div>
-            <div className='middle'>
-                <div className='layersIcon'>
-                    <FiLayers />
-                </div>
-                <Layers input='Media' number='1' isSelected={selectedLayer === 1} onClick={() => handleLayerClick(1)} />
-                <Layers input='Apps' number='2' isSelected={selectedLayer === 2} onClick={() => handleLayerClick(2)} />
-                <Layers input='Layer' number='3' isSelected={selectedLayer === 3} onClick={() => handleLayerClick(3)} />
-                <Layers input='(empty)' number='4' isSelected={selectedLayer === 4} onClick={() => handleLayerClick(4)} />
-                <Layers input='(empty)' number='5' isSelected={selectedLayer === 5} onClick={() => handleLayerClick(5)} />
-            </div>
-            <div className='down'>
-                <Macros />
-                <FileOptions />
-            </div>
+  return (
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+      <div className='up'>
+        <FaBars className='moreIcon' onClick={toggleSidebar} />
+        <Serial />
+      </div>
+      <div className='middle'>
+        <div className='layersIcon'>
+          <FiLayers />
         </div>
-    );
+        {config.layers.map((layer, index) => (
+          <Layers 
+            key={index} 
+            input={layerNames[index]} 
+            number={index + 1} 
+            isSelected={selectedLayer === index + 1} 
+            onClick={() => handleLayerClick(index + 1)} 
+            onNameChange={(name) => handleLayerNameChange(index, name)}
+          />
+        ))}
+      </div>
+      <div className='down'>
+        <Macros />
+        <FileOptions />
+        <button onClick={handleExportToPC}>Export to PC</button>
+      </div>
+    </div>
+  );
 }
 
 export default Sidebar;
