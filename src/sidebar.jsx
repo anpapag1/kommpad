@@ -35,6 +35,8 @@ function Sidebar({ config }) {
       }))
     };
 
+    console.log("Layers:", updatedConfig.layers); // Print the contents of the layers
+
     const blob = new Blob([JSON.stringify(updatedConfig, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -67,8 +69,7 @@ function Sidebar({ config }) {
       </div>
       <div className='down'>
         <Macros />
-        <FileOptions />
-        <button onClick={handleExportToPC}>Export to PC</button>
+        <FileOptions onClick={handleExportToPC}/>
       </div>
     </div>
   );
