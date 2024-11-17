@@ -3,11 +3,11 @@ import './sidebar.css';
 import Serial from './sidebarcomponents/serial.jsx';
 import Layers from './sidebarcomponents/layers.jsx';
 import Macros from './sidebarcomponents/macros.jsx';
-import FileOptions from './sidebarcomponents/fileOptions.jsx';
+import FileOptions from './sidebarcomponents/fileoptions.jsx';
 import { FaBars } from 'react-icons/fa';
 import { FiLayers } from "react-icons/fi";
 
-function Sidebar({ config, onSave }) {
+function Sidebar({ config }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLayer, setSelectedLayer] = useState(1);
   const [layerNames, setLayerNames] = useState(config.layers.map(layer => layer.name));
@@ -26,7 +26,7 @@ function Sidebar({ config, onSave }) {
     setLayerNames(newLayerNames);
   };
 
-  const handleSave = () => {
+  const handleExportToPC = () => {
     const updatedConfig = {
       ...config,
       layers: config.layers.map((layer, index) => ({
@@ -34,7 +34,14 @@ function Sidebar({ config, onSave }) {
         name: layerNames[index]
       }))
     };
-    onSave(updatedConfig);
+
+    const blob = new Blob([JSON.stringify(updatedConfig, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'macro.json';
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -60,7 +67,8 @@ function Sidebar({ config, onSave }) {
       </div>
       <div className='down'>
         <Macros />
-        <FileOptions onSave={handleSave} /> {/* Pass the onSave to FileOptions */}
+        <FileOptions />
+        <button onClick={handleExportToPC}>Export to PC</button>
       </div>
     </div>
   );

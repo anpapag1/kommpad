@@ -1,14 +1,14 @@
 import './components.css';
 import { BiExport } from "react-icons/bi";
 import { BiImport } from "react-icons/bi";
-import { BiSave } from "react-icons/bi";
+import { BiReset } from "react-icons/bi";
 import { BiCloudUpload } from "react-icons/bi";
 
 
 
 
 
-function FileOptions({ onSave }) {
+function FileOptions() {
     return (
         <div className="file-options">
             <button className="file-option-button" title="Export to PC">
@@ -17,8 +17,8 @@ function FileOptions({ onSave }) {
             <button className="file-option-button" title="Import from PC">
                 <BiImport />
             </button>
-            <button className="file-option-button" title="Save config" onClick={onSave}>
-                <BiSave />
+            <button className="file-option-button" title="Reset to defauls">
+                <BiReset />
             </button>
             <button className="file-option-button" title="Upload to device">
                 <BiCloudUpload />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./components.css";
 
-function Layers({ input = "Empty", number, isSelected, onClick, onNameChange }) {
+function Layers({ input = "Empty", number, isSelected, onClick }) {
   const [text, setText] = useState(input);
   const [buttonClass, setButtonClass] = useState(isSelected ? 'selected' : '');
 
@@ -11,7 +11,6 @@ function Layers({ input = "Empty", number, isSelected, onClick, onNameChange }) 
 
   const handleInputChange = (e) => {
     setText(e.target.value);
-    onNameChange(e.target.value);
   };
 
   const handleBlur = () => {

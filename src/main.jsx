@@ -17,19 +17,6 @@ function Main() {
     setSettingsText(text);
   };
 
-  const handleSave = (updatedConfig) => {
-    setConfig(updatedConfig);
-    // Save the updatedConfig to the JSON file
-    const fs = window.require('fs');
-    fs.writeFile('./code/macro.json', JSON.stringify(updatedConfig, null, 2), (err) => {
-      if (err) {
-        console.error('Error saving JSON file:', err);
-      } else {
-        console.log('JSON file has been saved.');
-      }
-    });
-  };
-
   useEffect(() => {
     // Update the state if macroData changes
     setConfig(macroData);
@@ -42,7 +29,7 @@ function Main() {
         onEncoderClick={handleEncoderClick} 
         config={config} // Pass the config to App
       />
-      <Sidebar config={config} onSave={handleSave} /> {/* Pass the config and onSave to Sidebar */}
+      <Sidebar config={config} /> {/* Pass the config to Sidebar */}
       <Settings value={settingsText} config={config} /> {/* Pass the config to Settings */}
     </React.StrictMode>
   );
