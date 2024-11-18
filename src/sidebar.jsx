@@ -7,7 +7,7 @@ import FileOptions from './sidebarcomponents/fileoptions.jsx';
 import { FaBars } from 'react-icons/fa';
 import { FiLayers } from "react-icons/fi";
 
-function Sidebar({ config, onSave, onLayerNameChange, onLayerSelect }) {
+function Sidebar({ config, onSave, onLayerNameChange, onLayerSelect, setConfig }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLayer, setSelectedLayer] = useState(0);
   const [layerNames, setLayerNames] = useState(config.layers.map(layer => layer.name));
@@ -21,33 +21,38 @@ function Sidebar({ config, onSave, onLayerNameChange, onLayerSelect }) {
       const firstNonEmptyLayer = layerNames.findIndex(name => name !== "(empty)");
       if (firstNonEmptyLayer !== -1) {
         setSelectedLayer(firstNonEmptyLayer);
-        onLayerSelect(firstNonEmptyLayer); // Notify Main about the selected layer
+        onLayerSelect(firstNonEmptyLayer);
       }
     } else {
       setSelectedLayer(index);
-      onLayerSelect(index); // Notify Main about the selected layer
+      onLayerSelect(index);
     }
   };
 
   const handleLayerNameChangeLocal = (index, name) => {
-    const newLayerNames = [...layerNames];
-    newLayerNames[index] = name;
-    setLayerNames(newLayerNames);
-    onLayerNameChange(index, name); // Update the config in Main
+    setConfig(prevConfig => {
+      const newConfig = { ...prevConfig };
+      newConfig.layers[index] = {
+        ...newConfig.layers[index],
+        name: name
+      };
+      return newConfig;
+    });
+    onLayerNameChange(index, name);
   };
 
   const handleSelectedDisable = () => {
     const availableLayerIndex = layerNames.findIndex(name => name !== '(empty)');
     if (availableLayerIndex !== -1) {
       setSelectedLayer(availableLayerIndex);
-      onLayerSelect(availableLayerIndex); // Notify Main about the selected layer
+      onLayerSelect(availableLayerIndex);
     }
   };
 
   const handleMouseLeave = () => {
     setIsOpen(false);
   };
-  
+
   return (
     <div 
       className={`sidebar ${isOpen ? 'open' : ''}`} 
@@ -63,11 +68,11 @@ function Sidebar({ config, onSave, onLayerNameChange, onLayerSelect }) {
         </div>
         {config.layers.map((layer, index) => (
           <Layers 
-            key={index} 
-            input={layerNames[index]} 
-            number={index + 1} 
-            isSelected={selectedLayer === index} 
-            onClick={() => handleLayerClick(index)} 
+            key={index}
+            input={layer.name}
+            number={index + 1}
+            isSelected={selectedLayer === index}
+            onClick={() => handleLayerClick(index)}
             onNameChange={(name) => handleLayerNameChangeLocal(index, name)}
             onDisable={handleSelectedDisable}
           />
@@ -75,7 +80,11 @@ function Sidebar({ config, onSave, onLayerNameChange, onLayerSelect }) {
       </div>
       <div className='down'>
         <Macros />
-        <FileOptions onSave={onSave} />
+        <FileOptions 
+          onSave={onSave}
+          config={config}
+          onConfigUpdate={setConfig}
+        />
       </div>
     </div>
   );

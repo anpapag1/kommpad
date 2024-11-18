@@ -31,9 +31,14 @@ function Main() {
   };
 
   const handleLayerNameChange = (index, name) => {
-    const newConfig = { ...config };
-    newConfig.layers[index].name = name;
-    setConfig(newConfig);
+    setConfig(prevConfig => {
+      const newConfig = { ...prevConfig };
+      newConfig.layers[index] = {
+        ...newConfig.layers[index],
+        name: name
+      };
+      return newConfig;
+    });
   };
 
   const handleLayerSelect = (index) => {
@@ -41,10 +46,15 @@ function Main() {
   };
 
   const handleConfigChange = (newConfig) => {
-    const updatedConfig = { ...config };
-    // Update the current layer's configuration
-    updatedConfig.layers[selectedLayer] = newConfig;
-    setConfig(updatedConfig);
+    setConfig(prevConfig => {
+      const updatedConfig = { ...prevConfig };
+      // Update the specific layer while preserving other layers
+      updatedConfig.layers[selectedLayer] = {
+        ...updatedConfig.layers[selectedLayer],
+        ...newConfig
+      };
+      return updatedConfig;
+    });
   };
   
   useEffect(() => {
@@ -62,7 +72,8 @@ function Main() {
         config={config} 
         onSave={handleSave} 
         onLayerNameChange={handleLayerNameChange} 
-        onLayerSelect={handleLayerSelect} // Pass the layer select handler
+        onLayerSelect={handleLayerSelect}
+        setConfig={setConfig} // Add this line
       />
       <Settings 
         value={settingsText} 

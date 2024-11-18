@@ -6,6 +6,7 @@ function Layers({ input = "Empty", number, isSelected, onClick, onNameChange, on
   const [buttonClass, setButtonClass] = useState(isSelected ? 'selected' : '');
 
   useEffect(() => {
+    setText(input);
     if (isSelected) {
       setButtonClass("selected");
     } else if (!isSelected && text !== "(empty)") {
@@ -13,7 +14,7 @@ function Layers({ input = "Empty", number, isSelected, onClick, onNameChange, on
     } else {
       setButtonClass("");
     }
-  }, [isSelected, text]);
+  }, [input, isSelected, text]);
 
   const handleInputChange = (e) => {
     setText(e.target.value);
