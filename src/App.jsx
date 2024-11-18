@@ -9,11 +9,11 @@ function App({ onButtonClick, onEncoderClick, config }) {
       <h1 className="text">KOMM.PAD</h1>
       <div className="box">
         <div className="buttonMatrix">
-          {config.layers[0].buttons.map((button, index) => (
+          {config.buttons.map((button, index) => (
             <Button 
               key={index} 
               value={button.label} 
-              onClick={() => onButtonClick("Button Configurator")} 
+              onClick={() => onButtonClick(button.label)} 
             />
           ))}
         </div>

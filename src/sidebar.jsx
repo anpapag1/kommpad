@@ -7,47 +7,52 @@ import FileOptions from './sidebarcomponents/fileoptions.jsx';
 import { FaBars } from 'react-icons/fa';
 import { FiLayers } from "react-icons/fi";
 
-function Sidebar({ config }) {
+function Sidebar({ config, onSave, onLayerNameChange, onLayerSelect }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLayer, setSelectedLayer] = useState(1);
+  const [selectedLayer, setSelectedLayer] = useState(0);
   const [layerNames, setLayerNames] = useState(config.layers.map(layer => layer.name));
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLayerClick = (number) => {
-    setSelectedLayer(number);
+  const handleLayerClick = (index) => {
+    if (layerNames[index] === "(empty)") {
+      const firstNonEmptyLayer = layerNames.findIndex(name => name !== "(empty)");
+      if (firstNonEmptyLayer !== -1) {
+        setSelectedLayer(firstNonEmptyLayer);
+        onLayerSelect(firstNonEmptyLayer); // Notify Main about the selected layer
+      }
+    } else {
+      setSelectedLayer(index);
+      onLayerSelect(index); // Notify Main about the selected layer
+    }
   };
 
-  const handleLayerNameChange = (index, name) => {
+  const handleLayerNameChangeLocal = (index, name) => {
     const newLayerNames = [...layerNames];
     newLayerNames[index] = name;
     setLayerNames(newLayerNames);
+    onLayerNameChange(index, name); // Update the config in Main
   };
 
-  const handleExportToPC = () => {
-    const updatedConfig = {
-      ...config,
-      layers: config.layers.map((layer, index) => ({
-        ...layer,
-        name: layerNames[index]
-      }))
-    };
-
-    console.log("Layers:", updatedConfig.layers); // Print the contents of the layers
-
-    const blob = new Blob([JSON.stringify(updatedConfig, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'macro.json';
-    a.click();
-    URL.revokeObjectURL(url);
+  const handleSelectedDisable = () => {
+    const availableLayerIndex = layerNames.findIndex(name => name !== '(empty)');
+    if (availableLayerIndex !== -1) {
+      setSelectedLayer(availableLayerIndex);
+      onLayerSelect(availableLayerIndex); // Notify Main about the selected layer
+    }
   };
 
+  const handleMouseLeave = () => {
+    setIsOpen(false);
+  };
+  
   return (
-    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+    <div 
+      className={`sidebar ${isOpen ? 'open' : ''}`} 
+      onMouseLeave={handleMouseLeave}
+    >
       <div className='up'>
         <FaBars className='moreIcon' onClick={toggleSidebar} />
         <Serial />
@@ -61,15 +66,16 @@ function Sidebar({ config }) {
             key={index} 
             input={layerNames[index]} 
             number={index + 1} 
-            isSelected={selectedLayer === index + 1} 
-            onClick={() => handleLayerClick(index + 1)} 
-            onNameChange={(name) => handleLayerNameChange(index, name)}
+            isSelected={selectedLayer === index} 
+            onClick={() => handleLayerClick(index)} 
+            onNameChange={(name) => handleLayerNameChangeLocal(index, name)}
+            onDisable={handleSelectedDisable}
           />
         ))}
       </div>
       <div className='down'>
         <Macros />
-        <FileOptions onClick={handleExportToPC}/>
+        <FileOptions onSave={onSave} />
       </div>
     </div>
   );

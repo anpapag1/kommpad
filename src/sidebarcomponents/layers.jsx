@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "./components.css";
 
-function Layers({ input = "Empty", number, isSelected, onClick }) {
+function Layers({ input = "Empty", number, isSelected, onClick, onNameChange, onDisable }) {
   const [text, setText] = useState(input);
   const [buttonClass, setButtonClass] = useState(isSelected ? 'selected' : '');
 
   useEffect(() => {
-    setButtonClass(isSelected ? "selected" :  "");
-  }, [isSelected]);
+    if (isSelected) {
+      setButtonClass("selected");
+    } else if (!isSelected && text !== "(empty)") {
+      setButtonClass("notSelected");
+    } else {
+      setButtonClass("");
+    }
+  }, [isSelected, text]);
 
   const handleInputChange = (e) => {
     setText(e.target.value);
+    onNameChange(e.target.value); // Notify parent about the change
   };
 
   const handleBlur = () => {
     if (text.trim() === "") {
       setText("(empty)");
+      onNameChange("(empty)"); // Notify parent about the change
+      onDisable(); // Notify parent about the disable
     }
   };
 

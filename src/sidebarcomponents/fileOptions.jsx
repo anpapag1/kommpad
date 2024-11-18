@@ -4,16 +4,7 @@ import { BiImport } from "react-icons/bi";
 import { BiSave } from "react-icons/bi";
 import { BiCloudUpload } from "react-icons/bi";
 
-
-
-
-
-function FileOptions() {
-    const handleExportToPC = () => {
-        // Add your export logic here
-        console.log("Export to PC");
-    };
-    
+function FileOptions({ onSave }) {
     return (
         <div className="file-options">
             <button className="file-option-button" title="Export to PC">
@@ -22,7 +13,7 @@ function FileOptions() {
             <button className="file-option-button" title="Import from PC">
                 <BiImport />
             </button>
-            <button className="file-option-button" title="Reset to defauls" onClick={handleExportToPC}>
+            <button className="file-option-button" title="Save" onClick={onSave}>
                 <BiSave />
             </button>
             <button className="file-option-button" title="Upload to device">
